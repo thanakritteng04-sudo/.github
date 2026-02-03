@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# 1. Your Episode Data
+# 1. Your Episode Data (S1-S9)
 data = {
     "S1": [8.1, 8.4, 8.2, 8.4, 8.7, 8.3, 8.8, 8.5, 9.2, 9.1, 8.8, 8.8, None, None, None, None, None],
     "S2": [8.8, 8.4, 8.3, 8.2, 8.1, 8.8, 8.6, 8.1, 8.5, 8.2, 8.6, 8.5, None, None, None, None, None],
@@ -18,7 +18,7 @@ data = {
 df = pd.DataFrame(data).T
 df.columns = [f"E{i+1}" for i in range(17)]
 
-# 2. Design the Heatmap
+# 2. Draw the Heatmap
 plt.figure(figsize=(15, 8), facecolor='#121212')
 sns.set(rc={'axes.facecolor':'#121212', 'figure.facecolor':'#121212'})
 # 'RdYlGn' is Red (low) to Green (high)
@@ -29,5 +29,5 @@ plt.title("SERIES LEGACY RATINGS", color="white", fontsize=20, pad=20)
 plt.xticks(color="white")
 plt.yticks(color="white", rotation=0)
 
-# 3. Save the image
+# 3. Save the actual file that the README is looking for
 plt.savefig("series_graph.png", bbox_inches='tight', facecolor='#121212')
