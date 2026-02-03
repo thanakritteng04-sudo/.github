@@ -1,0 +1,33 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 1. Your Episode Data
+data = {
+    "S1": [8.1, 8.4, 8.2, 8.4, 8.7, 8.3, 8.8, 8.5, 9.2, 9.1, 8.8, 8.8, None, None, None, None, None],
+    "S2": [8.8, 8.4, 8.3, 8.2, 8.1, 8.8, 8.6, 8.1, 8.5, 8.2, 8.6, 8.5, None, None, None, None, None],
+    "S3": [8.1, 8.3, 8.3, 8.6, 8.2, 8.3, 8.6, 8.2, 7.9, 8.3, 8.2, 8.9, None, None, None, None, None],
+    "S4": [8.8, 8.6, 8.4, 8.9, 8.7, 8.3, 8.8, 8.5, 9.2, 9.1, 9.2, 9.3, 9.7, None, None, None, None],
+    "S5": [8.1, 8.4, 8.2, 8.4, 8.7, 8.3, 8.8, 8.5, 9.2, 9.1, 8.4, 8.2, None, None, None, None, None],
+    "S6": [8.1, 8.8, 8.5, 8.3, 8.3, 8.5, 7.9, 7.9, 8.6, 8.0, 9.3, 9.5, None, None, None, None, None],
+    "S7": [9.5, 8.9, 8.7, 8.9, 8.2, 7.9, 7.9, 8.9, 8.4, 8.9, 9.1, 9.1, 9.9, None, None, None, None],
+    "S8": [8.8, 8.4, 9.4, 8.4, 4.9, 8.4, 8.9, 9.5, 9.5, 9.6, 8.6, 8.6, 9.1, None, None, None, None],
+    "S9": [9.4, 8.8, 8.9, 8.8, 8.7, 9.5, 9.4, 9.6, 9.9, 9.8, 8.4, 8.9, 8.9, 8.9, 9.5, 9.4, 10.0]
+}
+
+df = pd.DataFrame(data).T
+df.columns = [f"E{i+1}" for i in range(17)]
+
+# 2. Design the Heatmap
+plt.figure(figsize=(15, 8), facecolor='#121212')
+sns.set(rc={'axes.facecolor':'#121212', 'figure.facecolor':'#121212'})
+# 'RdYlGn' is Red (low) to Green (high)
+sns.heatmap(df, annot=True, cmap='RdYlGn', cbar=False, linewidths=1, linecolor='#121212',
+            annot_kws={"weight": "bold", "color": "black", "size": 9})
+
+plt.title("SERIES LEGACY RATINGS", color="white", fontsize=20, pad=20)
+plt.xticks(color="white")
+plt.yticks(color="white", rotation=0)
+
+# 3. Save the image
+plt.savefig("series_graph.png", bbox_inches='tight', facecolor='#121212')
